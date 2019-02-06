@@ -128,9 +128,3 @@ def test_earth_data():
     vo = v = get_velocity_neded_for_orbit(ro, ro, sgp)
     apa, pga = get_attitude_from_radiuses(ro, pgt, rp)
     print(rp, sgp, p, sa, ro, tf, ti, at, pgt, vt, vo, vt - vo, apa, pga)
-
-
-
-
-
-

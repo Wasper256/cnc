@@ -9,19 +9,16 @@ class PlanetsParameters(models.Model):
         (RSS, 'Planets of real(RSS) world'),
     )
     PLANET = 1
-    SATELITE = 2
+    SATELLITE = 2
     OBJECT_TYPE = (
         (PLANET, 'Planet'),
-        (SATELITE, 'Satelite'),
+        (SATELLITE, 'Satellite'),
     )
     name = models.CharField(max_length=200)
-    world_type = models.IntegerField(
-        choices=WORLD_CHOICES, null=True, blank=True)
-    type_of_object = models.IntegerField(
-        choices=OBJECT_TYPE, null=True, blank=True)
-    radius = models.IntegerField(null=True, blank=True)  # in m
-    atmosphere_attitude = models.IntegerField(null=True, blank=True)  # in m
-    mass = models.BigIntegerField(null=True, blank=True)  # in kg
-    standard_gravitational_parameter = models.BigIntegerField(
-        null=True, blank=True)  # in (km^3)/(s^2)
-    day_time = models.IntegerField(null=True, blank=True)  # in seconds
+    world_type = models.PositiveSmallIntegerField(choices=WORLD_CHOICES)
+    type_of_object = models.PositiveSmallIntegerField(choices=OBJECT_TYPE)
+    radius = models.BigIntegerField()  # in meters
+    atmosphere_attitude = models.IntegerField()  # in meters
+    mass = models.DecimalField(max_digits=100, decimal_places=0)  # in kilograms
+    standard_gravitational_parameter = models.DecimalField(max_digits=100, decimal_places=0)  # (km^3)/(s^2)
+    day_time = models.BigIntegerField()  # in seconds
